@@ -1,0 +1,162 @@
+A Linear Regression model can be represented by the equation.
+
+Vectorized form :
+
+y = h(x) = theta^(T).x  
+
+       theta --> model's parameter vector.containimg the bias term theta(0) and the feature
+  		 weights theta(1) to theta(n)
+
+       theta^T is the transpsoe of theta(a row vector instead of a column vector)
+
+Cost Function(Error function) ->helps to measure the extent to which the model is going wrong in
+				estimating the relationship between X and Y.It tells us how bad
+				the model is performing..
+
+Loss Function : It is usually a function defined on a data point,while cost function is for the entire
+		training data.
+		
+We then apply the sigmoid function to the output of the linear regression
+
+h(x) = sigma(theta^(T).x)
+
+where the sigmoid function is represented by,
+
+      sigma(t) = 1
+		----
+                1+e^-t
+
+
+The hypothesis for logistic regression then becomes,
+
+	h(x)  = 	1
+		--------------
+                1+e^(-theta)^(T)(x)
+
+	h(x)  =  >0.5	if theta^(T).x > 0
+
+		 <0.5  	if theta^(T).x <0
+
+			
+By default,the value of the probability threshold(p) is 0.5.
+If the weighted sum of inputs is greater than zero, 
+the predicted class is 1 and vice-versa. 
+
+Softmax Regression :
+
+Logistic Regression can be generalized to support multiple classes directly,
+without having to train and combine multiple binary classifiers..
+This is called Softmax Regression or Multinomial Logistic Regression.
+
+This classifier predicts only one class at a time(i.e.,multiclass not multioutput)
+so it should be used only with mutually exclusive classes such as diffferent types of 
+plants,different species.You cannot use it to recognize multipeople in one picture.
+
+The hyperparameter controlling the regularization strength of a scikit-learn,for logistic regression
+is not alpha,but its inverse C.The higher the value of C,the less the model is regularized.
+
+Training a model:
+
+Holdout method:
+
+In case of supervised learning,a model is trained by using the labelled input data.
+How can we understand the performance of the model?The test data may not be available immediately.
+Also,the label value of the test data is not known..
+A part of the input data is held back(thats the name "Holdout" originates).In general 
+70-80% of the input data is used for model training and 30-20% is used as test data for the
+validation of the performance of the model.
+
+Once the model is trained using the training data,the labels of the test data are predicted using the model's
+target function.Then the predicted value is compared with the actual value of the labels.
+
+K-Fold Cross Validation:
+
+Process of repeated holdout is the basis for k-fold cross-validation.
+In k-fold cross validation,the data set is divided into k-completely distinct or non-overlapping
+random partitions called folds.The value of 'k' can be set to any number acccording to given data.
+
+10-fold cross validation is by far the most popular approach.In this approach,for each of the 10-folds,each 
+comprising of appx 10% of the data,one of the folds is used as the test data for validating
+model performance trained based on remaining 9 folds.(90% of the data)This is repeated 10 times.
+The average performance across all folds is being reported.
+
+Bootstrapping:
+
+In this same data instance may be picked up multiple times in a sample.
+since elements are repeated in the sample,possible number of training/test data samples is unlimited.
+
+Classification Steps:
+
+Problem --> Identification of Required data -->Data-Pre Processing -->Definition of training-set
+                                   |                    |                             |           
+                                                             -->    Algorithm Selection(Model)
+							|		 	      |
+							     --->		   Training
+							|			      | 
+                                                                          Evaluation with test set
+							|			     |
+							Parameter tuning<------ O.K -->Classifier
+
+
+
+
+Decision Tree :
+
+As the name suggests it is a classifier based on a series of logical decisions,which resembles a tree 
+with the branches..
+
+A decision tree is used for multi-dimensional analysis with multiple class.It is characterized by fast
+execution time and ease in the implementation of the rules.
+
+Tree terminology :
+
+Root node: The node at the top of the tree.
+Child Node : One node is child node of the other if it is below from the node (away from the root node).
+Parent Node:One node is parent node of the other if it is above of the node (closer to the root node)
+Leaf Node:Node which donot have any child nodes.
+Edge :Connection between two nodes.
+Degree : Count of subtree of any node.
+Height of the node:Number of edges from node to leaf node having the longest edges in the middle.
+Height of the tree : Height of the root node.
+Siblings : Two nodes are sibling if they share the same parent node.
+
+
+1.CART (Classification and Regression Trees) — This makes use of Gini impurity as metric.
+2.ID3 (Iterative Dichotomiser 3) — This uses entropy and information gain as metric
+
+Entropy --> Measure of the impurities
+
+Information Gain -->Entropy(S) - Weightedavg * Entropy of each feature..
+Entropy   -->  summation (i =1 to c) -plog(base2)p(i)
+
+			where c rep the number of diff class labels and p refers to the proportion of values falling
+			into the ith class label.
+
+Gini(E) = 1 - (Σj = 1 to c)p^2 j
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
