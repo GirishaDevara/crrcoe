@@ -1,0 +1,178 @@
+
+If you aggregate the predictions of a group of predictors(classifiers or regressors),
+you will often get better predictions than with the individual predictor.A group of 
+predictors is called an "Ensemble",and this technique is called "Ensemble learning"
+
+Ensemble models in machine learning operate on a similar idea.
+ 
+They combine the decisions from multiple models to improve the overall performance
+The three most popular methods for combining the predictions from different models are:
+
+Voting. Building multiple models (typically of differing types) 
+and simple statistics (like calculating the mean..) are used to combine predictions.
+
+Bagging. Building multiple models (typically of the same type) 
+from different subsamples of the training dataset.
+
+Boosting. Building multiple models (typically of the same type) 
+each of which learns to fix the prediction errors of a prior model in the chain.
+
+
+Let’s understand the concept of ensemble learning with an example. 
+
+
+Suppose you are a movie director and you have created a short movie on a 
+very important and interesting topic. Now, you want to take preliminary 
+feedback (ratings) on the movie before making 
+it public. What are the possible ways by which you can do that?
+
+A: You may ask one of your friends to rate the movie for you.
+Now it’s entirely possible that the person you have chosen loves you 
+very much and doesn’t want 
+to break your heart by providing a 1-star rating to the horrible work 
+you have created.
+
+B: Another way could be by asking 5 colleagues of yours to rate the movie.
+This should provide a better idea of the movie. This method may provide honest ratings for your movie. But a problem still exists. These 5 people may not be “Subject Matter Experts” on the topic of your movie. Sure, they might understand the cinematography, the shots, or the audio, but at the same time may not be the best judges of dark humour.
+
+C: How about asking 50 people to rate the movie?
+Some of which can be your friends, some of them can be your colleagues and some may 
+even be total strangers.
+
+The responses, in this case, would be more generalized and diversified since 
+now you have people with different sets of skills. And as it turns out – this is 
+a better approach to get honest ratings than the previous cases we saw.
+
+With these examples, you can infer that a diverse group of people are likely 
+to make better decisions as compared to individuals. 
+Similar is true for a diverse set of models
+in comparison to single models. This diversification 
+in Machine Learning is achieved by a 
+technique called Ensemble Learning.
+
+
+Voting Classifer:
+
+A very simple way to create an even better classifer is to aggregate the 
+predictions of each classifer
+and predict the class that gets the most votes.
+This majority-vote classifer is called a hard-voting classifier,
+suprisingly,this voting classifier often achieves a higher accuracy
+than the best classifier.
+
+Hard voting is where a model is selected from an ensemble to make 
+the final prediction by a simple majority vote for accuracy.
+
+Soft Voting can only be done when all your classifiers can calculate 
+probabilities for the outcomes. 
+Soft voting arrives at the best result by averaging out the probabilities 
+calculated by individual algorithms.
+
+
+Decision trees are a simple and powerful predictive modeling technique, but they suffer from 
+high-variance.
+
+This means that trees can get very different results given different training data.
+
+A technique to make decision trees more robust and to achieve better performance is called 
+bootstrap aggregation or bagging for short.
+
+Bagging is one of the Ensemble construction techniques which is also known as Bootstrap Aggregation. 
+Bootstrap establishes the foundation of Bagging technique. 
+
+Bootstrap is a sampling technique in which
+we select “n” observations out of a population of “n” observations.
+
+But the selection is entirely 
+random, i.e., each observation can be chosen from the original population so that each 
+observation is equally likely to be selected in each iteration of the bootstrapping process.
+After the bootstrapped samples are formed, separate models are trained with the bootstrapped samples. In real experiments, the bootstrapped samples are drawn from the training set, and the sub-models are tested using the testing set. 
+The final output prediction is combined across the projections of all the sub-models.
+
+Boosting ensemble algorithms creates a sequence of models that attempt to correct the mistakes
+of the models before them in the sequence.
+
+It refers to any Ensemble method that can combine several weak learners into a strong learner.The general
+idea of most of boosting methods is to train predictors sequentially,each trying to correct its 
+predecssor.
+
+Once created, the models make predictions which may be weighted by their demonstrated accuracy and the results are combined to create a final output prediction.
+
+The two most common boosting ensemble machine learning algorithms are:
+
+-->AdaBoost(Adaptive Boosting)
+-->Stochastic Gradient Boosting
+
+One way for a new predictor to correct its predecessor is to pay a bit more attention to the 
+training instances that the predecessor underfitted.This results in new predictors focusing more and
+more on the hard cases.
+
+An AdaBoost classifier is a meta-estimator that begins by fitting a classifier on the original dataset
+and then fits additional copies of the classifier on the same dataset but where the weights of 
+incorrectly classified instances are adjusted such that subsequent 
+classifiers focus more on difficult cases.
+
+At a high level, AdaBoost is similar to Random Forest in that they both tally up the predictions 
+made by each decision trees within the forest to decide on the final classification. 
+There are however, some subtle differences.
+
+For instance, in AdaBoost, the decision trees have 
+a depth of 1 (i.e. 2 leaves). In addition, the predictions made by each decision tree have varying
+impact.
+
+Gradient boosting classifiers are a group of machine learning algorithms that combine many weak 
+learning models together to create a strong predictive model. Decision trees are usually used when
+doing gradient boosting. Gradient boosting models are becoming popular because of their 
+effectiveness at classifying complex datasets,on the final prediction made by the model.
+
+Gradient boosting classifiers are the AdaBoosting method combined with weighted minimization, 
+after which the classifiers and weighted inputs are recalculated. 
+
+The objective of Gradient Boosting 
+classifiers is to minimize the loss, or the difference between the actual class value of the 
+training example and the predicted class value. 
+
+It isn't required to understand the process for 
+reducing the classifier's loss, but it operates similarly to gradient descent in a neural network.
+
+Refinements to this process were made and Gradient Boosting Machines were created.
+
+In the case of Gradient Boosting Machines, every time a new weak learner is added to the model, 
+the weights of the previous learners are frozen or cemented in place, left unchanged as the new 
+layers are introduced. 
+This is distinct from the approaches used in AdaBoosting where the values are adjusted when new 
+learners are added.
+
+The power of gradient boosting machines comes from the fact that they can be used on more than
+binary classification problems, they can be used on multi-class classification problems and even 
+regression problems.
+
+The Gradient Boosting Classifier depends on a loss function. A custom loss function can be used, and many standardized loss functions are supported by gradient boosting classifiers, but the loss function has to be differentiable.
+
+Classification algorithms frequently use logarithmic loss, while regression algorithms can use squared errors. Gradient boosting systems don't have to derive a new loss function every time the boosting algorithm is added, rather any differentiable loss function can be applied to the system.
+
+Gradient boosting systems have two other necessary parts: a weak learner and an additive component. 
+
+Gradient boosting systems use decision trees as their weak learners.
+
+Regression trees are used for the weak learners, and these regression trees output real values. 
+Because the outputs are real values, as new learners are added into the model the 
+output of the regression trees can be added together to correct for errors in the predictions.
+
+
+The additive component of a gradient boosting model comes from the fact that trees are added to the model over time, and when this occurs the existing trees aren't manipulated, their values remain fixed.
+
+A procedure similar to gradient descent is used to minimize the error between given parameters. This is done by taking the calculated loss and performing gradient descent to reduce that loss. Afterwards, the parameters of the tree are modified to reduce the residual loss.
+
+The new tree's output is then appended to the output of the previous trees used in the model. This process is repeated until a previously specified number of trees is reached, or the loss is reduced below a certain threshold.
+
+In order to implement a gradient boosting classifier, we'll need to carry out a number of different steps. We'll need to:
+
+Fit the model
+Tune the model's parameters and Hyperparameters
+Make predictions
+Interpret the results
+
+
+
+
