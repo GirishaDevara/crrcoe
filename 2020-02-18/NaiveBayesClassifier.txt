@@ -1,0 +1,178 @@
+We interact with text daily multiple times,starting with our 
+daily activities(personal or official),text data grows exponentially.
+
+With this huge amount of data(text),a lot of things can be done.
+Identifying and extracting information from it,search from documents,
+classifying them into groups,and identifying hidden topics in the text.
+
+Text can be divided into different primitives:
+->Document
+->Sentences
+->Words
+->Characters
+
+Document is a large collection of text,it contains sentences.
+Each sentence is formed with a collection of words and each 
+word is a group of characters.
+
+Feature Engineering:
+
+->Handling Numerical Features ->MinMaxScaler,StandardScaler.
+->Handling Categorical Features ->Dummies,Mapping methods,LabelEncoder
+
+->Handling text features:
+
+->CountVectorizer
+->TFIdfVectorizer
+->TFIdfTransformer
+
+->Missing Data
+  ->Remove the features which contain missing values
+  ->Remove rows containing missing values
+  ->Replacing missing values with significant data [Mean,Median,Zero values,Random int values]
+
+->Dimension Reduction (Unsupervised Learning)
+
+
+sample = ['problem of evil','evil queen','horizon problem']
+
+		    problem of evil  queen horizon 	
+problem of evil       1     1  	1     0      0	
+evil queen 	      0     0   1     1      0
+horizon problem	      1     0   0     0      1	
+
+TFIDF(Term Freq,Invese Doc Freq) : It is the most common method in text handling.It is based on 
+facts that important words are those which comes frequently in related document
+but not comes in every document.By applying this method each doc/text get a score 
+vector of words.Higher score of any word means word is important for that document.
+
+Stop words:
+
+Stop words are words like “and”, “the”, “him”, which are presumed to be 
+uninformative in representing the content of a text, and which may be removed 
+to avoid them being constructed as signal for prediction. 
+Sometimes, however, similar words are useful for prediction, such as in
+classifying writing style or personality.
+
+Tf-idf term weighting:
+
+In a large text corpus, some words will be very present 
+(e.g. “the”, “a”, “is” in English)
+hence carrying very little meaningful information about the actual 
+contents of the document. If we were to feed the direct count data 
+directly to a classifier those very frequent terms would shadow the 
+frequencies of rarer yet more interesting terms.
+
+In order to re-weight the count features into floating point values 
+suitable for usage by a classifier it is very common to use the tf–idf transform.
+
+Tf means term-frequency while tf–idf means term-frequency times inverse document-frequency: 
+
+tf-idf(t,d) = tf(t,d)*idf(t)
+
+TfidfTransformer default settings 
+
+TfidfTransformer(norm = 'l2',use_idf = True,
+                smooth_idf = True,sublinear_tf = False)
+
+idf(t) = log  1+n
+	    --------  + 1     n ->number of documents in the set 	
+             1+ df(t)         df(t) -> number of documents in the document set that 
+                                       contain term 't'
+
+Resultant will be the Euclidean Norm:
+
+v(norm) = v/||v||2  = v/sqrt(v1^2 +v2^2+v3^2.....+vn^2)
+
+
+idf(t) = log  n
+            -----      or   log n / df(t)  + 1
+            1 + df(t)
+
+eg:
+counts = [[3,0,1],
+          [2,0,0],
+          [3,0,0],
+          [4,0,0],
+          [3,2,0],
+          [3,0,2]]
+
+n = 6
+
+df(t)term1 = 6
+
+idf(t)term1 = log 6/6  + 1  = 1
+
+tf-idfterm1 = tf * idf = 3 * 1 = 3
+
+tf-idfterm2 = 0 * (log(6/1) +  1 )  = 0
+
+tf-idfterm3 = 1 * (log(6/2) + 1) = 2.0986
+
+tf-idf(raw) = [3,0,2.0986]
+
+[3,0,2.0986]
+-------------------   =  [0.81,0,0.57]
+sqrt(3^2+0+2.0986^2) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Again, scikit learn (python library) will help here to build a Naive Bayes model in Python. There are three types of Naive Bayes model under the scikit-learn library:
+
+Gaussian: It is used in classification and it assumes that features follow a normal distribution.
+
+Multinomial: It is used for discrete counts. For example, let’s say,  we have a text classification problem. Here we can consider Bernoulli trials which is one step further and instead of “word occurring in the document”, we have “count how often word occurs in the document”, you can think of it as “number of times outcome number x_i is observed over the n trials”.
+
+Bernoulli: The binomial model is useful if your feature vectors are binary (i.e. zeros and ones). One application would be text classification with ‘bag of words’ model where the 1s & 0s are “word occurs in the document” and “word does not occur in the document” respectively.
+
+
+
