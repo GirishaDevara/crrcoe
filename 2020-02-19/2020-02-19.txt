@@ -1,0 +1,237 @@
+
+
+In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parametric 
+
+method used for classification and regression.
+
+
+In both cases, the input consists of the k closest training examples in the feature space. 
+
+The output depends on whether k-NN is used for classification or regression:
+
+In k-NN classification, the output is a class membership. 
+
+An object is classified by a plurality vote of its neighbors, 
+
+with the object being assigned to the class most common among its k nearest neighbors 
+
+(k is a positive integer, typically small). If k = 1, 
+
+then the object is simply assigned to the class of that single nearest neighbor.
+
+
+As a part of kNN algorithm,the unknown and unlabelled data which comes for a 
+
+prediction problem is judged on the basis of the training data set elements 
+
+which are similar to the unknown element.So,the class label of the 
+
+unknown element is assigned on the basis of the class labels of the similar
+
+training data set of elements(metaphorically can be considered as neighbors 
+
+of the unknown element).
+
+
+k-NN is a type of instance-based learning, or lazy learning, where the function is 
+
+only approximated locally and all computation is deferred until classification.
+
+The neighbors are taken from a set of objects for which the class (for k-NN classification).
+
+This can be thought of as the training set for the algorithm, though 
+
+no explicit training step is required.
+
+A peculiarity of the k-NN algorithm is that it is sensitive to the local structure of the data.
+
+K nearest neighbors or KNN Algorithm is a simple algorithm which uses the entire dataset 
+
+in its training phase. 
+
+Whenever a prediction is required for an unseen data instance, it searches through the entire training
+
+dataset for k-most similar instances and the data with the most similar instance is 
+
+finally returned as the prediction
+
+
+Implementation:
+
+In the knn algorithm,the class label of the test data elements is decided by the class label of
+
+the training data 
+
+elements which are neighbouring (similar in nature).But we have two challenges :
+
+-->What is the basis of this similarity or when can we say that two data elements are similar?
+
+-->How many similar elements should be considered for deciding the class label of each test 
+
+data element?
+
+To answer these questions A commonly used distance metric for continuous variables is Euclidean distance. 
+
+For discrete variables, such as for text classification, another metric can be used, such as the 
+
+overlap metric (or Hamming distance).
+
+
+To check out how many similar elements to be considered,we need to check the value
+
+of 'k'which is a user defined parameter given as an input to the algorithm.
+
+In the KNN algorithm the value of 
+
+'k' is 3 indicates the number of neighbour that need to be considered.For example the value of k is 3,only three nearest 
+
+neighbours or three training data elements closest to the test data elements are considered.Out of the three data
+
+elements,the class label of that data element is directly assigned to the test data element.
+
+Consider d1 and d2 as data elements and features i have as f1 and f2
+
+
+Formula for Euclidean distance :sqrt((f11 - f12)^2 + (f21 - f22)^2)
+
+f11 - value of feature f1 for data element d1
+
+f12 - value of feature f1 for data element d2
+
+f21 - value of feature f2 for data element d1 
+
+f22 - value of feature f2 for data element d2
+
+Name       Aptitude  		Communication 		Class		 Distance  k = 1   k = 2    k = 3
+ 
+Karuna	   2			5			Speaker          3.04
+Bhuvna	    2			6			Speaker          3.35
+Gaurav     7			6			Leader           2.5
+Parul	  7			2.5			Intel            2.83
+ 	
+Dinesh 	  8			6			Leader	         3.35
+
+Jani	  4			7			Speaker          2.69
+
+Bobby	  5			3			Intel            1.5                 1.5    1.5
+
+Parimal	  3			5.5			Speaker          2.23
+
+Govind	  8			3.3			Intel            3.35
+
+Susant	  6			5.5			Leader          1.41                        1.41
+
+Gouri     6			4			Intel           1.118     1.118      1.18   1.18
+
+Bharat	  6			7			Leader           2.69
+
+Ravi	  6			2			Intel            2.69
+
+Pradeep   9			7			Leader           4.71
+
+Josh      5                    4.5			Intel
+
+
+Hamming Distance :Calculate the distance between binary vectors or it 
+
+is the distance between two strings of equal length is the number of positions at which the
+
+corresponding symbols are different. In other words, it measures the minimum 
+
+number of substitutions required to change one string into the other, or the minimum number 
+
+of errors that could have transformed one string into the other.
+
+
+
+Manhattan Distance: A taxicab geometry is a form of geometry in which the usual distance function or 
+
+metric of Euclidean geometry is replaced by a new metric in which the distance between two points is the
+
+sum of the absolute differences of their Cartesian coordinates. 
+
+
+d(1)(p,q)=||{p} - {q}||(1) = sum _{i=1}^{n} |p_{i}-q_{i}|,  where (p,q) are vectors p =(p1,p2,p3....pn) and 
+
+q = (q1,q2,q3...qn)
+
+
+The Minkowski distance is a metric in a normed vector space which can be considered as a generalization 
+
+of both the Euclidean distance and the Manhattan distance.
+
+
+Euclidean is a good distance measure to use if the input variables are similar in type 
+
+(e.g. all measured widths and heights). 
+
+
+Manhattan distance is a good measure to use if the input variables are not similar in type 
+
+(such as age, gender, height, etc.,)
+
+
+Best Prepare Data for KNN:
+
+Rescale Data: KNN performs much better if all of the data has the same scale. 
+
+Normalizing your data to the range [0, 1] is a good idea.
+
+It may also be a good idea to standardize your data 
+
+if it has a Gaussian distribution.
+
+Address Missing Data: Missing data will mean that the distance between samples can 
+
+not be calculated. 
+
+These samples could be excluded or the missing values could be imputed.
+
+Lower Dimensionality: KNN is suited for lower dimensional data. You can try it on 
+
+high dimensional data 
+
+(hundreds or thousands of input variables) but be aware that it may not perform as well as other techniques.
+
+KNN can benefit from feature selection that reduces the dimensionality of the 
+
+input feature space.
+
+Few strategies to arrive at a value of 'k' :
+
+->One common practise is to set the k value equal to square root of the
+number of training records
+
+->To test several k values on a variety of test data and choose the one 
+that delivers the best performance 
+
+->Choose a large value of 'k' but apply a weighted voting process in which
+the vote of close neighbours is considered more influential than the 
+vote of distant neighbours
+
+
+KNN is an algorithm that is considered both non-parametric and an example of lazy learning. 
+
+What do these two terms mean exactly?
+
+Non-parametric means that it makes no assumptions. The model is made up entirely from 
+
+the data given to it rather than assuming its structure is normal.
+
+Lazy learning means that the algorithm makes no generalizations.
+
+This means that there is little training involved when using this method.
+
+Because of this, all of the training data is also used in testing and directly applies
+
+the philosophy of nearest neighbors finding to arrive to the classification.
+
+Strengths:
+->Simple
+->Very effective in certain situations like Recommender system design
+->Very fast
+
+Weakness :
+->Doesnot learn anything in realsense as it relies completely on training data
+->Large amount of computational space is required for loading the training data for 
+classification.
